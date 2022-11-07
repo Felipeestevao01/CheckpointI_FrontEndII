@@ -1,5 +1,5 @@
 const form = document.querySelector("#form_add_card")
-form.addEventListener("submit", function(event){
+form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     let inputTitulo = document.querySelector("#titulo")
@@ -15,9 +15,14 @@ form.addEventListener("submit", function(event){
     let btnRemover = document.createElement('button')
     btnRemover.classList = "btnremove"
 
-    if(inputTitulo.value == "" || inputDescricao.value == "" || inputUrl.value == ""){
-        return false
+    if (inputTitulo.value == "" || inputDescricao.value == "" || inputUrl.value == "") {
+        return alert("Favor preencher todos os campos.")
     }
+
+    if (inputTitulo.value.length < 4 || inputDescricao.value.length < 4) {
+        return alert("Título e Descrição precisam ter 4 caracteres ou mais.")
+    }
+
     tituloh3.innerHTML = inputTitulo.value
     descricaop.innerHTML = inputDescricao.value
     imagem.src = inputUrl.value
@@ -40,4 +45,10 @@ form.addEventListener("submit", function(event){
     btnRemover.addEventListener("click", function () {
         divCard.remove()
     })
+})
+
+const btnDarkMode = document.querySelector(".btn_dark_mode")
+btnDarkMode.addEventListener("click", function () {
+    var element = document.body
+    element.classList.toggle("dark_mode");
 })
